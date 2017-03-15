@@ -85,6 +85,8 @@ pubnub.addListener({
 })
 
 
+this.pubnub.subscribe({ channels: ['ch1', 'sample_project']})
+
 
 
 
