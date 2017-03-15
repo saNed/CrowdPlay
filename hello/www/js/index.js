@@ -87,6 +87,15 @@ pubnub.addListener({
 
 this.pubnub.subscribe({ channels: ['ch1', 'sample_project']})
 
+var sound_secret = new Howl({
+  src: ['music/secret.mp3'],
+  autoplay: false,
+  loop: false,
+  volume: 1,
+  onend: function() {
+    console.log('Finished!');
+  }
+});
 
 
 
