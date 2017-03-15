@@ -54,7 +54,7 @@ $(document).ready(function() {
         subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
     });
 
-    pubnub.addListener({
+    this.pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
                 publishSampleMessage();
