@@ -50,7 +50,7 @@ app.initialize();
 $(document).ready(function() {
 
     this.pubnub = new PubNub({
-        publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e'
+        publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e',
         subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
     });
 
