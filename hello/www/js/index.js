@@ -60,11 +60,15 @@ for (i = 0; i < musicFileNames.length; i++) {
     });
 }
 
+pubnub.addListener({
+    status: function(statusEvent) {
+    },
 
 
 
 
 
+})
 
 
 
