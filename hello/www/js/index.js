@@ -72,9 +72,11 @@ pubnub.addListener({
             if (message.message.type == 144) {
                 // note attack
                 soundArr[myNote].play();
+                window.plugins.flashlight.switchOn();
             } else {
                 // note release
                 soundArr[myNote].stop();
+                window.plugins.flashlight.switchOff();
             }
 
         }
