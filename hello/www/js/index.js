@@ -39,9 +39,7 @@ var musicFileNames = ['beyond_city_harp_[note_1].mp3',
                       'beyond_city_harp_[note_4].mp3',
                       'beyond_city_harp_[note_5].mp3',
                       'beyond_city_harp_[note_6].mp3',
-                      'beyond_city_harp_[whole_section].mp3',
-                      'item.mp3',
-                      'secret.mp3'
+                      'beyond_city_harp_[whole_section].mp3'
                       ];
 
 soundArr = [];
