@@ -75,6 +75,34 @@ $(document).ready(function() {
     });
 
 
+    var sound_secret = new Howl({
+      src: ['music/secret.mp3'],
+      autoplay: false,
+      loop: false,
+      volume: 1,
+      onend: function() {
+        console.log('Finished!');
+      }
+    });
+
+    $('#secret-button').click(function() {
+        sound_secret.play();
+    });
+
+    var sound_item = new Howl({
+      src: ['music/item.mp3'],
+      autoplay: false,
+      loop: false,
+      volume: 1,
+      onend: function() {
+        console.log('Finished!');
+      }
+    });
+
+    $('#item-button').click(function() {
+        sound_item.play();
+    });
+
 
 });
 
