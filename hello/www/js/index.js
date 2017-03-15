@@ -47,14 +47,14 @@ var app = {
 };
 
 app.initialize();
-$(document).ready(function() {
+// $(document).ready(function() {
 
     this.pubnub = new PubNub({
         publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e',
         subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
     });
 
-    this.pubnub.addListener({
+    pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
                 // publishSampleMessage();
@@ -63,9 +63,9 @@ $(document).ready(function() {
         message: function(message) {
             console.log("New Message!!", message);
         }
-    })
+    })  
 
-    this.pubnub.subscribe({ channels: ['ch1']})
+    this.pubnub.subscribe({ channels: ['ch1', 'awesomeChannel']})
 
     this.pubnub.publish({
         message: {
@@ -73,6 +73,8 @@ $(document).ready(function() {
         },
         channel: 'ch1'
     });
+
+    alert('updated');
 
 
     var sound_secret = new Howl({
@@ -104,6 +106,6 @@ $(document).ready(function() {
     });
 
 
-});
+//});
 
 
