@@ -63,11 +63,21 @@ app.initialize();
         message: function(message) {
             console.log("New Message!!", message);
 
-		    if (message.color === "blue") {
-		    	console.log("pizza");
+            var musicFileNames = ['beyond_city_harp_[note_1].mp3',
+            					  'beyond_city_harp_[note_2].mp3',
+            					  'beyond_city_harp_[note_3].mp3',
+            					  'beyond_city_harp_[note_4].mp3', 
+            					  'beyond_city_harp_[note_5].mp3', 
+            					  'beyond_city_harp_[note_6].mp3', 
+            					  'beyond_city_harp_[whole_section].mp3', 
+            					  'item.mp3',
+            					  'secret.mp3' 
+            					  ];
 
-		      var sound_secret = new Howl({
-		      	src: ['music/secret.mp3'],
+            musicFileNames[message.fileNumber.parsInt()]
+
+		      var sound = new Howl({
+		      	src: ['music/' + musicFileNames[message.fileNumber.parsInt()] ],
 		      	autoplay: true,
 		      	loop: false,
 		      	volume: 1,
@@ -75,17 +85,6 @@ app.initialize();
 		        console.log('Finished!');
 		      	}
 		      });
-		    } else {
-		      	var sound_item = new Howl({
-			      src: ['music/item.mp3'],
-			      autoplay: true,
-			      loop: false,
-			      volume: 1,
-			      onend: function() {
-			        console.log('Finished!');
-		     	 }
-		    	});
-		    }
         }
     })  
 
@@ -94,7 +93,7 @@ app.initialize();
 
     this.pubnub.publish({
         message: {
-            "color" : "blue"
+            "fileNumber" : "3"
         },
         channel: 'sample_project'
     });
