@@ -97,6 +97,9 @@ var sound_secret = new Howl({
   }
 });
 
+$('#secret-button').click(function() {
+    sound_secret.play();
+});
 
 
 
