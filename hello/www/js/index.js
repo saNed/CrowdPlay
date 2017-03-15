@@ -3,6 +3,7 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+        window.plugins.insomnia.keepAwake()
     },
 
     // deviceready Event Handler
@@ -11,6 +12,7 @@ var app = {
     // 'pause', 'resume', etc.
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
+        window.plugins.insomnia.keepAwake()
     },
 
     // Update DOM on a Received Event
@@ -29,8 +31,11 @@ var app = {
 app.initialize();
 
 this.pubnub = new PubNub({
-    publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e',
-    subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
+    // publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e',
+    // subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
+    publishKey: 'pub-c-cfd09a99-8261-4025-98fa-2cf0b2f39f3a',
+    subscribeKey: 'sub-c-b8b79242-0964-11e7-89e8-02ee2ddab7fe'
+
 });
 
 var musicFileNames = ['beyond_city_harp_[note_1].mp3',
@@ -43,6 +48,14 @@ var musicFileNames = ['beyond_city_harp_[note_1].mp3',
                       'item.mp3',
                       'secret.mp3'
                       ];
+
+var colorChange = ['note_1',
+                   'note_2',
+                   'note_3',
+                   'note_4',
+                   'note_5',
+                   'note_6'
+                    ];
 
 soundArr = [];
 

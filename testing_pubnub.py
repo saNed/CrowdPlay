@@ -20,9 +20,13 @@ output_MF3D = mido.open_output('MPKmini2') # open the corresponding Midi Port
 
  
 pnconfig = PNConfiguration()
- 
-pnconfig.subscribe_key = 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
-pnconfig.publish_key = 'pub-c-606bf400-d602-4743-971e-71ffb676d65e'
+
+# pnconfig.publish_key = 'pub-c-606bf400-d602-4743-971e-71ffb676d65e' 
+# pnconfig.subscribe_key = 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
+
+pnconfig.publish_key = 'pub-c-cfd09a99-8261-4025-98fa-2cf0b2f39f3a'
+pnconfig.subscribe_key = 'sub-c-b8b79242-0964-11e7-89e8-02ee2ddab7fe'
+
 
 channel = "sample_project"
 
@@ -65,6 +69,7 @@ try:
                 'velocity': message[2],
                 'time': stamp.microsecond
             }
+            print(data)
 
             def publish_callback(result, status):
                 print(result, status);

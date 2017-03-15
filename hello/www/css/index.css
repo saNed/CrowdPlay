@@ -27,7 +27,7 @@ body {
 
     background-position: 0px 0px;
     background-repeat: repeat;
-    animation: move-bg 30s infinite linear;
+    animation: move-bg 60s infinite linear;
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;   
@@ -59,8 +59,11 @@ body {
   0% {
     background-position: 0px 0px;
   }
+  50% {
+    background-position: -800px;
+  }
   100% {
-    background-position: -1977px;
+    background-position: 0px 0px;
   }
 }
 
@@ -117,4 +120,8 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+#overlay {
+
 }
