@@ -54,7 +54,6 @@ app.initialize();
         subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
     });
 
-
     pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
@@ -89,18 +88,17 @@ app.initialize();
         }
     })  
 
-    this.pubnub.subscribe({ channels: ['ch1', 'awesomeChannel']})
+
+    this.pubnub.subscribe({ channels: ['ch1', 'sample_project']})
 
     this.pubnub.publish({
         message: {
             "fileNumber" : "3"
         },
-        channel: 'ch1'
+        channel: 'sample_project'
     });
 
     alert('updated');
-
-
 
 
     var sound_secret = new Howl({
