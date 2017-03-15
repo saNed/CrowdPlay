@@ -69,7 +69,7 @@ pubnub.addListener({
         console.log('the message object', message.message);
 
         myNote = message.message.note - baseNote;
-        if (myNote >= 0 && myNote <= musicFileNames.length) {
+        if (myNote >= 0 && myNote <= soundArr.length) {
 
             if (message.message.type == 144) {
                 // note attack
