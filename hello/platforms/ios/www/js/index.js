@@ -49,32 +49,31 @@ var app = {
 app.initialize();
 $(document).ready(function() {
 
-    $('body').style("background-color", "blue");
+    this.pubnub = new PubNub({
+        publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e',
+        subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
+    });
 
-    // this.pubnub = new PubNub({
-    //     publishKey: 'pub-c-606bf400-d602-4743-971e-71ffb676d65e'
-    //     subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
-    // });
+    this.pubnub.addListener({
+        status: function(statusEvent) {
+            if (statusEvent.category === "PNConnectedCategory") {
+                // publishSampleMessage();
+            }
+        },
+        message: function(message) {
+            console.log("New Message!!", message);
+        }
+    })
 
-    // pubnub.addListener({
-    //     status: function(statusEvent) {
-    //         if (statusEvent.category === "PNConnectedCategory") {
-    //             publishSampleMessage();
-    //         }
-    //     },
-    //     message: function(message) {
-    //         console.log("New Message!!", message);
-    //     }
-    // })  
+    this.pubnub.subscribe({ channels: ['ch1']})
 
-    // this.pubnub.subscribe({ channels: ['ch1']})
+    this.pubnub.publish({
+        message: {
+            "color" : "blue"
+        },
+        channel: 'ch1'
+    });
 
-    // this.pubnub.publish({
-    //     message: {
-    //         "color" : "blue"
-    //     },
-    //     channel: 'ch1'
-    // });
 
 
 
