@@ -46,6 +46,8 @@ var musicFileNames = ['beyond_city_harp_[note_1].mp3',
 
 soundArr = [];
 
+baseNote = 48; // bottom note of the keyboard
+
         }
 
 
