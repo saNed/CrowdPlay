@@ -48,7 +48,17 @@ soundArr = [];
 
 baseNote = 48; // bottom note of the keyboard
 
+for (i = 0; i < musicFileNames.length; i++) {
+    soundArr[i] = new Howl({
+        src: ['music/' + musicFileNames[i] ],
+        autoplay: false,
+        loop: false,
+        volume: 1,
+        onend: function() {
+            console.log('File is '+ musicFileNames[i]);
         }
+    });
+}
 
 
 
