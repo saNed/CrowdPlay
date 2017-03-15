@@ -89,16 +89,18 @@ app.initialize();
         }
     })  
 
-    this.pubnub.subscribe({ channels: ['ch1', 'awesomeChannel']})
+
+    this.pubnub.subscribe({ channels: ['ch1', 'sample_project']})
 
     this.pubnub.publish({
         message: {
             "color" : "blue"
         },
-        channel: 'ch1'
+        channel: 'sample_project'
     });
 
     alert('updated');
+
 
     var sound_secret = new Howl({
       src: ['music/secret.mp3'],
