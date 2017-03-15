@@ -54,6 +54,7 @@ app.initialize();
         subscribeKey: 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
     });
 
+
     pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
@@ -62,6 +63,30 @@ app.initialize();
         },
         message: function(message) {
             console.log("New Message!!", message);
+
+		    if (message.color === "blue") {
+		    	console.log("pizza");
+
+		      var sound_secret = new Howl({
+		      	src: ['music/secret.mp3'],
+		      	autoplay: true,
+		      	loop: false,
+		      	volume: 1,
+		      	onend: function() {
+		        console.log('Finished!');
+		      	}
+		      });
+		    } else {
+		      	var sound_item = new Howl({
+			      src: ['music/item.mp3'],
+			      autoplay: true,
+			      loop: false,
+			      volume: 1,
+			      onend: function() {
+			        console.log('Finished!');
+		     	 }
+		    	});
+		    }
         }
     })  
 
@@ -75,6 +100,8 @@ app.initialize();
     });
 
     alert('updated');
+
+
 
 
     var sound_secret = new Howl({
