@@ -1,4 +1,4 @@
-
-./platforms
-./hooks
-config.xml
+.DS_Store
+platforms/*
+hooks/*
+./config.xml
