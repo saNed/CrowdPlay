@@ -89,6 +89,7 @@ app.initialize();
         }
     })  
 
+
     this.pubnub.subscribe({ channels: ['ch1', 'sample_project']})
 
     this.pubnub.publish({
@@ -99,6 +100,7 @@ app.initialize();
     });
 
     alert('updated');
+
 
     var sound_secret = new Howl({
       src: ['music/secret.mp3'],

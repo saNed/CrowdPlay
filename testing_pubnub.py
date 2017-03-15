@@ -1,3 +1,4 @@
+
 import sys
 import time
 from datetime import datetime
@@ -5,6 +6,7 @@ from pubnub.callbacks import SubscribeCallback
 from pubnub.enums import PNStatusCategory
 from pubnub.pnconfiguration import PNConfiguration
 from pubnub.pubnub import PubNub
+
 from rtmidi.midiutil import open_midiport
 import mido
 
@@ -15,11 +17,13 @@ try:
 except (EOFError, KeyboardInterrupt):
     sys.exit()
 output_MF3D = mido.open_output('MPKmini2') # open the corresponding Midi Port
+
  
 pnconfig = PNConfiguration()
  
 pnconfig.subscribe_key = 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
 pnconfig.publish_key = 'pub-c-606bf400-d602-4743-971e-71ffb676d65e'
+
 channel = "sample_project"
 
 pubnub = PubNub(pnconfig)
@@ -78,3 +82,4 @@ finally:
     midiin.close_port()
     del midiin
  
+
