@@ -63,11 +63,15 @@ for (i = 0; i < musicFileNames.length; i++) {
 pubnub.addListener({
     status: function(statusEvent) {
     },
+    message: function(message) {
+        console.log("New Message!!", message);
+
+        console.log('the message object', message.message);
 
 
 
 
-
+    }
 })
 
 
