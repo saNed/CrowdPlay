@@ -68,6 +68,7 @@ pubnub.addListener({
 
         console.log('the message object', message.message);
 
+        myNote = message.message.note - baseNote;
 
 
 
