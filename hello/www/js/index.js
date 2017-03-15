@@ -109,6 +109,9 @@ var sound_item = new Howl({
   onend: function() {
     console.log('Finished!');
   }
+});
 
-
+$('#item-button').click(function() {
+    sound_item.play();
+});
 
