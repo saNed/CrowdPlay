@@ -101,6 +101,14 @@ $('#secret-button').click(function() {
     sound_secret.play();
 });
 
+var sound_item = new Howl({
+  src: ['music/item.mp3'],
+  autoplay: false,
+  loop: false,
+  volume: 1,
+  onend: function() {
+    console.log('Finished!');
+  }
 
 
 
