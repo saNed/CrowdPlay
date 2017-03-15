@@ -69,8 +69,10 @@ pubnub.addListener({
         console.log('the message object', message.message);
 
         myNote = message.message.note - baseNote;
+        if (myNote >= 0 && myNote <= musicFileNames.length) {
 
 
+        }
 
     }
 })
