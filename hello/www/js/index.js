@@ -71,6 +71,13 @@ pubnub.addListener({
         myNote = message.message.note - baseNote;
         if (myNote >= 0 && myNote <= musicFileNames.length) {
 
+            if (message.message.type == 144) {
+                // note attack
+                soundArr[myNote].play();
+            } else {
+                // note release
+                soundArr[myNote].stop();
+            }
 
         }
 
