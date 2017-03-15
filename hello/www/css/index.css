@@ -59,8 +59,11 @@ body {
   0% {
     background-position: 0px 0px;
   }
+  50% {
+    background-position: -800px;
+  }
   100% {
-    background-position: -1977px;
+    background-position: 0px 0px;
   }
 }
 
@@ -117,4 +120,12 @@ h1 {
 .blink {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
+}
+
+.overlay {
+  transition: background-color 1s, transition: .7s;
+  -webkit-transition: background-color 1s, -webkit-transform .7s;
+  background-color: blue;
+  height: 600px;
+  width: 500px;
 }
