@@ -63,7 +63,7 @@ $(document).ready(function() {
         message: function(message) {
             console.log("New Message!!", message);
         }
-    })  
+    })
 
     this.pubnub.subscribe({ channels: ['ch1']})
 
