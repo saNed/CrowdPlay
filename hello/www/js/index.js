@@ -57,7 +57,7 @@ $(document).ready(function() {
     this.pubnub.addListener({
         status: function(statusEvent) {
             if (statusEvent.category === "PNConnectedCategory") {
-                publishSampleMessage();
+                // publishSampleMessage();
             }
         },
         message: function(message) {
