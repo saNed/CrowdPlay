@@ -1,10 +1,8 @@
+# Standard imports
 import sys
 import time
 from datetime import datetime
-from pubnub.callbacks import SubscribeCallback
-from pubnub.enums import PNStatusCategory
-from pubnub.pnconfiguration import PNConfiguration
-from pubnub.pubnub import PubNub
+from pubnub import PubNub
 from rtmidi.midiutil import open_midiport
 import mido
 
@@ -14,37 +12,37 @@ try:
     midiin, port_name = open_midiport(port)
 except (EOFError, KeyboardInterrupt):
     sys.exit()
-output_MF3D = mido.open_output('MPKmini2') # open the corresponding Midi Port
- 
-pnconfig = PNConfiguration()
- 
-pnconfig.subscribe_key = 'sub-c-533ed8e8-090b-11e7-afb0-0619f8945a4f'
-pnconfig.publish_key = 'pub-c-606bf400-d602-4743-971e-71ffb676d65e'
+output_MF3D = mido.open_output('') # open the corresponding Midi Port
+
+# Setup pubnub network
+pubnub = Pubnub(publish_key="pub-c-5b904818-cb5a-4909-b8cc-d3932d5ee41d",
+                subscribe_key="sub-c-d48408e4-dac9-11e6-a669-0619f8945a4f")
 channel = "sample_project"
 
-pubnub = PubNub(pnconfig)
+# Callback function that is executed when presence changes on PubNub network
+def presence_callback(message, channel):
+    print(message)
+    # Turn off all lights (52 - 67 corresponds to lights on second page of MF3D)
+    for note in range(52,67):
+        output_MF3D.send(mido.Message('note_off',
+                                      note=note,
+                                      velocity=127))
 
-class MySubscribeCallback(SubscribeCallback):
-    def status(self, pubnub, status):
-        print(status) 
-    def presence(self, pubnub, presence):
-        print(presence);
-        pass  # handle incoming presence data
- 
-    def message(self, pubnub, message):
-        print(message);
- 
-pubnub.add_listener(MySubscribeCallback())
-
+    # Turn on number of lights equal to occupancy
+    for i in range(message['occupancy']):
+        output_MF3D.send(mido.Message('note_on',
+                                      note=52+i,
+                                      velocity=127))
 
 print("Entering main loop. Press Control-C to exit.")
 try:
     # Monitor presence for changes in occupancy
-    # pubnub.subscribe().channels(channel).with_presence().execute()
+    pubnub.presence(channel=channel, callback=presence_callback)
 
     # Poll the MF3D infinitely for MIDI messages
     while True:
         msg = midiin.get_message()
+
         # Only consider messages with actual note information
         if msg:
             message, deltatime = msg
@@ -62,11 +60,8 @@ try:
                 'time': stamp.microsecond
             }
 
-            def publish_callback(result, status):
-                print(result, status);
-
             #Publish to pubnub channel
-            pubnub.publish().channel(channel).message(data).async(publish_callback)
+            pubnub.publish(channel, data)
 
         # Polling interval
         time.sleep(0.01)
@@ -77,4 +72,3 @@ finally:
     print("Exit.")
     midiin.close_port()
     del midiin
- 
